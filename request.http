@@ -1,0 +1,39 @@
+###
+POST http://localhost:9000/user
+Content-Type: application/json
+
+[
+    {
+        "_id": "63ff7abd3a56357bf98535f0",
+        "name": "Anna ",
+        "email": "anna@email.com",
+        "pasword": 123456,
+        "__v": 0
+    },
+    {
+        "_id": "63ff7b2b3a56357bf98535f4",
+        "name": "Belen",
+        "email": "belen@email.com",
+        "pasword": 123456,
+        "__v": 0
+    }
+]
+
+###
+GET http://localhost:8000/user/users 
+
+###
+GET http://localhost:9000/api/users/63ff7abd3a56357bf98535f0 
+
+###
+DELETE http://localhost:9000/api/users/63ff7abd3a56357bf98535f0 
+
+###
+PUT http://localhost:9000/api/users/6137e63ff7abd3a56357bf98535f0 
+Content-Type: application/json
+
+{
+  "name": "John",  
+  "email": "johnconway@email.com",
+  "pasword": 234567
+}
