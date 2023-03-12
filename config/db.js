@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose');
 
 const DB_URI =`mongodb://127.0.0.1:27017/urlShortener`
-// const DB_URI =`mongodb+srv://gechos:.Villalba69@cluster0.zrgd20q.mongodb.net/urlShortener`
+// // const DB_URI =`mongodb+srv://gechos:.Villalba69@cluster0.zrgd20q.mongodb.net/urlShortener`
 module.exports = () =>{
     const connect = () => {
         mongoose.connect(

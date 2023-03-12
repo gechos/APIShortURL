@@ -16,9 +16,12 @@ const urlSchema = new mongoose.Schema({
   shortenUrl: {
     type: String,
     required: true,
+  }, 
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId, ref: "user"
   },
 },
 {collection: 'shortUrl' }
 )
 
-module.exports = mongoose.model('shortUrl', urlSchema)
+module.exports = mongoose.model('Url', urlSchema)

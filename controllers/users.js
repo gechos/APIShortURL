@@ -1,20 +1,5 @@
 const shortid = require("shortid");
-const userSchema = require("../models/userUrlModel");
-
-// crea colección usuario userSchemas
-async function handleGenerateNewuserURL(req, res) {
-  const body = req.body;
-  if (!body.user) return res.status(400).json({ error: "user is required" });
-  if (!body.pasword) return res.status(400).json({ error: "pasword is required" });
-  if (!body.email) return res.status(400).json({ error: "email is required" });
-  await userSchema.create({
-    email: body.email,
-    User: body.user,
-    Pasword: body.pasword,
-    history: []
-  });
-  return res.json({ UserId: body.user , Pasword: body.pasword});
-};
+const userSchema = require("../models/user");
 
 
 
@@ -28,9 +13,9 @@ async function getallusers (req, res) {
 
 // get a user
 async function getuser (req, res) {
-  const { email } = req.params;
+  const { username } = req.params;
   userSchema
-    .find({ email: email })
+    .find({ username: username })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };
@@ -38,9 +23,9 @@ async function getuser (req, res) {
 // delete a user
 
 async function deluser (req, res){
-  const { email } = req.params;
+  const { username } = req.params;
   userSchema
-    .remove({ email: email })
+    .remove({ username: username })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };
@@ -49,4 +34,4 @@ async function deluser (req, res){
 
   
 
-module.exports = { handleGenerateNewuserURL, getuser, getallusers,deluser };
+module.exports = { getuser, getallusers,deluser };
