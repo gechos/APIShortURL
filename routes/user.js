@@ -59,12 +59,12 @@ router.post('/authenticate',(req,res,next) =>{
 
 router.get("/users", getallusers);
 
-router.get("/user/:email", getuser);
+router.get("/user", getuser);
 
 //No funciona delete no tiene permisos mongo
 // router.delete("/user/:email", deluser);
 
-router.delete("/user/del/:username", deluser);
+router.delete("/user", deluser);
 
 
 module.exports = router;
