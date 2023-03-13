@@ -47,4 +47,7 @@ router.get("/:shortId", (req, res) => {
 });
 
 
+router.get("/history/:userId", handleGetListUrls);
+
+
 module.exports = router;
