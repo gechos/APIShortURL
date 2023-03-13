@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
 const User = require ('../models/user');
-const { getuser, getallusers, deluser  } = require("../controllers/user");
+const { getuser, getallusers, deluser } = require("../controllers/user");
 
 
 
@@ -10,6 +10,8 @@ const router = express.Router();
 
 
 //registro o login
+
+// router.post("/register", handleregister);
 
 router.post('/register',(req,res) =>{
   const {username, name, password} = req.body;
@@ -28,6 +30,7 @@ router.post('/register',(req,res) =>{
 
 //inicio sesion o Login
 
+// router.post('/authenticate', handleLogin);
 router.post('/authenticate',(req,res,next) =>{
   const {username, password} = req.body;
 

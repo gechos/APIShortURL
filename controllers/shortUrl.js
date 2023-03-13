@@ -37,15 +37,4 @@ async function getUrl (req, res) {
 };
 
 
-// lee el historico de urls por usuario
-
-async function handleGetListUrls(req, res) {
-  const userId = req.params.userId;
-  const result = await URL.findOne({ UserId });
-  return res.json({
-    shortId: result.history,
-    redirectURL: result.history,
-  });
-};
-
 module.exports = { handleGenerateNewShortURL, getallurls, getUrl };

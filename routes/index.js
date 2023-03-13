@@ -7,6 +7,10 @@ router.use('/user', require('./user'));
 //consultas urls
 router.use('/shortUrl', require('./shortUrl'));
 
+//consultas urls por usuario
+router.use('/userUrls', require('./userUrl'));
+
+
 
 
 module.exports = router;
