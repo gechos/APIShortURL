@@ -2,13 +2,16 @@ const express = require("express");
 const cors = require("cors");
 require('dotenv').config();
 
+// llamamos a inicio DB
+const initDB = require("./config/db");
+// const connectDB= import("./config/connect");
+// const {close, connectDB} = require ("./config/connect")
+
 const app = express();
 app.use(cors());
 
 
 
-// llamamos a inicio DB
-const initDB = require("./config/db");
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +23,7 @@ app.use(express.json());  // permite leer desde json
 // ejecutamos conexion DB
 
 initDB();
+// connectDB();
 
 
 const port = process.env.PORT || 8000;  // TOMA EL PUERTO QUE DA EL SERVIDO CLOUSTING Y SINO EL 9000

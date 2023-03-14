@@ -11,10 +11,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    name: {
-      type: String,
-      required: true,
-    },
+    name: { type: String, required: true, unique: true, max: 50, min: 3 },
     password: {
       type: String,
       required: true,
@@ -51,6 +48,7 @@ UserSchema.methods.isCorrectPassword = function (password, callback) {
     }
   });
 };
+
 
 
 
