@@ -18,7 +18,7 @@ const urlSchema = new mongoose.Schema({
     required: true,
   }, 
   user_id: {
-    type: mongoose.Schema.Types.ObjectId, ref: "user"
+    type: mongoose.Schema.Types.ObjectId, ref: "User"
   },
 },
 {collection: 'shortUrl' }

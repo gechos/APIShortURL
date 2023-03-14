@@ -33,8 +33,9 @@ router.post('/register',(req,res) =>{
 // router.post('/authenticate', handleLogin);
 router.post('/authenticate',(req,res,next) =>{
   const {username, password} = req.body;
+  console.log(username, password)
 
-  User.findOne({username},(err, user) =>{
+  User.findOne({username: username},(err, user) =>{
     if(err){
       res.status(500).send("Error al autentificar el usuario");
     }else if(!user){
