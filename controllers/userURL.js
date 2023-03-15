@@ -6,7 +6,7 @@ var mongoose = require("mongoose");
 
 const getListUrlsUser = async (req, res) => {
   const { userId } = req.body;
-  console.log( userId)
+  // console.log( userId)
 
   var id = mongoose.Types.ObjectId(userId);
 
@@ -27,6 +27,8 @@ const getListUrlsUser = async (req, res) => {
     return res.status(200).json({ success: true, data: dataResponse });
   });
 
+
+
   // datos a añadir en consulta raiz URl
   // return URL.find({ user_id: userId })
   //   .populate({ path: "user_id", select: "name", $addFields: { id: "_id" } })
@@ -38,4 +40,21 @@ const getListUrlsUser = async (req, res) => {
   //   });
 };
 
-module.exports = { getListUrlsUser };
+// eliminar una Url de un usuario
+
+// delete a user
+
+const deluserUrl = async (req, res) => {
+  const { userId } = req.body;
+  const { url }  = req.body;
+
+  // console.log(url,userId)
+
+  await URL
+    .findOneAndRemove({ user_id: userId },{original_url: url})
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+};
+
+
+module.exports = { getListUrlsUser, deluserUrl };

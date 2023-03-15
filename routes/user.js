@@ -63,10 +63,11 @@ router.post('/authenticate',(req,res,next) =>{
 
 router.get("/users", getallusers);
 
+// consulta de un usuario
+
 router.get("/user", getuser);
 
-//No funciona delete no tiene permisos mongo
-// router.delete("/user/:email", deluser);
+//Eliminacion de un usuario
 
 router.delete("/user", deluser);
 
