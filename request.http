@@ -1,36 +1,94 @@
-###
-POST http://localhost:8000/user
+###1
+POST http://localhost:8000/user/register
 Content-Type: application/json
 
 [
     {
         "email": "anna@email.com",
         "name": "Anna ",
-        "pasword": 123456
+        "password": "234569"
     },
     {
         "username": "belen@email.com",
         "name": "Belen",
-        "pasword": 193456
+        "password": "345678"
     },
     {
         "username": "johnconway@email.com",
         "name": "John",  
-        "pasword": 234567
+        "password": "234567"
+    },
+    {
+       "username": "addmax@email.com",
+        "name": "Mac",  
+        "password": "298567" 
     }
 ]
 
-###
+###2
+POST http://localhost:8000/user/authenticate
+
+[
+    {
+        "email": "anna@email.com",
+        "password": "234569"
+    },
+    {
+        "username": "belen@email.com",
+        "password": "345678"
+    },
+    {
+        "username": "johnconway@email.com",
+        "password": "234567"
+    },
+    {
+       "username": "addmax@email.com", 
+        "password": "298567" 
+    }
+]
+
+###3
 GET http://localhost:8000/user/users 
 
-###
+###4
 GET http://localhost:8000/user/user
 
-###
+[
+    {
+        "email": "anna@email.com"
+    },
+    {
+        "email": "belen@email.com"
+    },
+    {
+        "email": "johnconway@email.com"
+    },
+    {
+       "email": "addmax@email.com"
+    }
+]
+
+###5
 DELETE http://localhost:8000/user/user
+[
+    {
+        "email": "anna@email.com"
+    },
+    {
+        "email": "belen@email.com"
+    },
+    {
+        "email": "johnconway@email.com"
+    },
+    {
+       "email": "addmax@email.com"
+    }
+]
+
+
 
 ###
-PUT http://localhost:8000/user/user
+PATCH  http://localhost:8000/user/user
 Content-Type: application/json
 
 {

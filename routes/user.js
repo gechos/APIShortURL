@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
 const User = require ('../models/user');
-const { getuser, getallusers, deluser } = require("../controllers/user");
+const { getuser, getallusers, deluser, updatenameuser, updatepassworduser } = require("../controllers/user");
 
 
 
@@ -70,6 +70,15 @@ router.get("/user", getuser);
 //Eliminacion de un usuario
 
 router.delete("/user", deluser);
+
+// update name usuario
+
+router.patch("/user", updatenameuser);
+
+// update passwprd usuario /?? falta encriptar
+
+router.patch("/user/password", updatepassworduser);
+
 
 
 module.exports = router;
