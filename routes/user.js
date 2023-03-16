@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
 const User = require ('../models/user');
-const { getuser, getallusers, deluser, updatenameuser, updatepassworduser } = require("../controllers/user");
+const { getuser, getallusers, deluser, updatenameuser, resetpassworduser } = require("../controllers/user");
 
 
 
@@ -15,7 +15,6 @@ const router = express.Router();
 
 router.post('/register',(req,res) =>{
   const {username, name, password} = req.body;
-  // console.log(username, name, password)
 
   const user = new User({username, name, password});
 
@@ -77,7 +76,7 @@ router.patch("/user", updatenameuser);
 
 // update passwprd usuario /?? falta encriptar
 
-router.patch("/user/password", updatepassworduser);
+router.patch("/user/password", resetpassworduser);
 
 
 

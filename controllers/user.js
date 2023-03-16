@@ -21,6 +21,17 @@ async function getuser (req, res) {
     .catch((error) => res.json({ message: error }));
 };
 
+
+// delete a user
+
+async function deluser (req, res){
+  const { email } = req.body;
+  await User
+    .remove({ username: email })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+};
+
 // update name
 
 async function updatenameuser (req, res){
@@ -33,27 +44,17 @@ async function updatenameuser (req, res){
     .catch((error) => res.json({ message: error }));
 };
 
-async function updatepassworduser (req, res){
+async function resetpassworduser (req, res){
   const {userId} = req.body;
   const { password } = req.body;
+  const newpassword = await bcrypt.hash(req.body.password,10)
   await User
     .find({_id: userId})
-    .updateOne({password: password})
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-};
-
-
-// delete a user
-
-async function deluser (req, res){
-  const { email } = req.body;
-  await User
-    .remove({ username: email })
+    .updateOne({password: newpassword})
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };
 
 
 
-module.exports = { getuser, getallusers , deluser, updatenameuser, updatepassworduser };
+module.exports = { getuser, getallusers , deluser, updatenameuser, resetpassworduser };
