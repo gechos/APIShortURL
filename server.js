@@ -1,6 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const expressValidator = require('express-validator')
+
 require('dotenv').config();
+
+
+
+
 
 // llamamos a inicio DB
 const initDB = require("./config/db");
@@ -15,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  // permite leer desde json
 
 
+
 // ejecutamos conexion DB
 
 initDB();
@@ -24,7 +31,8 @@ const port = process.env.PORT || 8000;  // TOMA EL PUERTO QUE DA EL SERVIDO CLOU
 
 
 // routes
-app.use("/", require("./routes"));
+app.use("/api", require("./routes"));
+
 
 // app.use(express.static(path.join(__dirname,'public')));  // cargar contenido statico para ejs
 

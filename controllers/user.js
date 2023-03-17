@@ -21,6 +21,15 @@ async function getuser (req, res) {
     .catch((error) => res.json({ message: error }));
 };
 
+// estatico para iniciar sesion 
+async  function signIn (username, res) {
+  await User 
+    .find({ username: username })
+    .then((data) => res.json(data.username))
+    .catch((error) => res.json({ message: error }));
+ }
+
+
 
 // delete a user
 
@@ -57,4 +66,4 @@ async function resetpassworduser (req, res){
 
 
 
-module.exports = { getuser, getallusers , deluser, updatenameuser, resetpassworduser };
+module.exports = { getuser, getallusers , deluser, updatenameuser, resetpassworduser, signIn };
