@@ -1,43 +1,19 @@
 const express = require("express");
-
+const { body, validationResult } = require("express-validator");
 const User = require("../models/user");
-
 const router = express.Router();
+const signIn = require("../controllers/signIn");
+
 
 
 //inicio sesion o Login
 
-router.post("/", (req, res, next) => {
-  const { username, password } = req.body;
-
-  User.findOne({ username: username }, (err, user) => {
-    if (err) {
-      res.status(500).send("Error al autentificar el usuario");
-    } else if (!user) {
-      res.status(500).send("Usuario no existe");
-    } else {
-      user.isCorrectPassword(password, (err, result) => {
-        if (err) {
-          res.status(500).send("Error al autentificar el usuario", err.message);
-          next();
-        } else if (result) {
-          res
-            .status(200)
-            .json({
-              msg: "Usuario autentificado correctamente",
-              user_id: user._id,
-              username: user.username,
-              name: user.name,
-            });
-          next();
-        } else {
-          res.status(500).send("Usuario y/o contraseña incorrecta");
-          next();
-        }
-      });
-    }
-  });
-});
+router.post("/", body("username", "Introduce un email válido").isEmail(),
+  body("name", "Introduce un nombre válido").isLength({ min: 3 }),
+  body("password", "Introduce una contraseña válida").isLength({
+    min: 6,
+    max: 8,
+  }), signIn);
 
 
 module.exports = router;
