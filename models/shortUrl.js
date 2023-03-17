@@ -5,7 +5,7 @@ const urlSchema = new mongoose.Schema({
   original_url: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   short_url: {
     type: String,
@@ -20,8 +20,9 @@ const urlSchema = new mongoose.Schema({
   user_id: {
     type: mongoose.Schema.Types.ObjectId, ref: "User"
   },
-},
-{collection: 'shortUrl' }
+},{collection: 'shortUrl' }
 )
+
+urlSchema.index({ "user_id": 1, "original_url" : 1}); // nivel de esquema
 
 module.exports = mongoose.model('Url', urlSchema)

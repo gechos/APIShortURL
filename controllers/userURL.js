@@ -46,12 +46,12 @@ const getListUrlsUser = async (req, res) => {
 
 const deluserUrl = async (req, res) => {
   const { userId } = req.body;
-  const { url }  = req.body;
+  const { url_id }  = req.body;
 
   // console.log(url,userId)
 
   await URL
-    .findOneAndRemove({ user_id: userId },{original_url: url})
+    .findOneAndRemove({ user_id: userId },{_id: url_id})
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 };

@@ -96,3 +96,6 @@ Content-Type: application/json
   "name": "John",  
   "pasword": 988888
 }
+
+"https://aws.amazon.com/es/console/"
+"https://www.mongodb.com/docs/manual/core/schema-validation/"

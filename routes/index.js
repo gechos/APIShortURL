@@ -1,8 +1,13 @@
 var router = require('express').Router();
 
-// inicio Sesion o registro y consultas usuarios
-router.use('/user', require('./user'));
+//registro usuarios
+router.use('/register', require('./register'));
 
+// inicio Sesion o registro
+router.use('/authenticate', require('./authenticate'));
+
+// consultas usuarios
+router.use('/user', require('./user'));
 
 //consultas urls
 router.use('/shortUrl', require('./shortUrl'));
